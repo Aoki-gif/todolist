@@ -3,6 +3,7 @@ import "./styles.css";
 import {InputTodo} from "./comp/Input_Todo";
 import {IncompleteTodos} from "./comp/IncompleteTodos";
 
+//ReactでTODOリスト柵瀬作成
 export const App = () => {
   const [todoText, setTodoText] = useState("");
 
