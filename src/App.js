@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
-import {InputTodo} from "./comp/Input_Todo";
-import {IncompleteTodos} from "./comp/IncompleteTodos";
+import { InputTodo } from "./comp/Input_Todo";
+import { IncompleteTodos } from "./comp/IncompleteTodos";
 
 //ReactでTODOリスト柵瀬作成
 export const App = () => {
@@ -26,34 +26,42 @@ export const App = () => {
     setincompleteTodos(newTodos);
   };
 
-  const onClickComp = (index) =>{
+  const onClickComp = (index) => {
     const newIncompTodos = [...incompleteTodos];
     //indexを１つ削除する
     newIncompTodos.splice(index, 1);
 
-    const newTodos = [...completeTodos,incompleteTodos[index]];
+    const newTodos = [...completeTodos, incompleteTodos[index]];
     setincompleteTodos(newIncompTodos);
     setcompleteTodos(newTodos);
   };
 
-  const onClickBack = (index) =>{
+  const onClickBack = (index) => {
     const newCompTodos = [...completeTodos];
     newCompTodos.splice(index, 1);
 
-    const newTodos = [...incompleteTodos,completeTodos[index]];
-    
+    const newTodos = [...incompleteTodos, completeTodos[index]];
+
     setcompleteTodos(newCompTodos);
     setincompleteTodos(newTodos);
   };
 
   return (
     <>
-     <InputTodo todoText={todoText} onChange={onChangeTodoText} onClick={onClickAdd}/>
-     <IncompleteTodos todo={incompleteTodos} onComplete={onClickComp} onDelete={onClickDel}/>
+      <InputTodo
+        todoText={todoText}
+        onChange={onChangeTodoText}
+        onClick={onClickAdd}
+      />
+      <IncompleteTodos
+        todo={incompleteTodos}
+        onComplete={onClickComp}
+        onDelete={onClickDel}
+      />
       <div className="complete-area">
         <p className="title">完了のTODO</p>
         <ul>
-          {completeTodos.map((todo,index) => {
+          {completeTodos.map((todo, index) => {
             return (
               <div key={todo} className="list-row">
                 <li> {todo} </li>
